@@ -18,9 +18,7 @@ export class ReadComponent implements OnInit {
   @Select(BookState.getBooks) books$: Observable<Book[]>
 
   // Select book from the state  
-  constructor(private store: Store) {
-    //this.books$ = this.store.select(state => state.books.books)
-  }
+  constructor(private store: Store) {}
 
   // Method to dispatch RemoveBook action 
 
@@ -28,8 +26,6 @@ export class ReadComponent implements OnInit {
     this.store.dispatch(new RemoveBook(title))
   }
   
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
