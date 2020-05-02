@@ -1,0 +1,8 @@
+<div class="right" *ngIf="books$">
+    <h3>Books</h3>
+    <ul>
+      <li (click)="delBook(book.title)" *ngFor="let book of books$ | async">
+          <a>{{ book.title }}</a>
+      </li>
+    </ul>  
+  </div>

@@ -1,30 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'
-
-import { AppRoutingModule } from './app-routing.module';
+import { NgxsModule } from '@ngxs/store';
 import { AppComponent } from './app.component';
-import { BooksComponent } from './components/books/books.component';
-import { BookItemComponent } from './components/book-item/book-item.component';
+import { ReadComponent } from './read/read.component';
+import { CreateComponent } from './create/create.component';
+import { BookState } from './state/book.state';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+
 import { HeaderComponent } from './components/layout/header/header.component';
-import { AddBookComponent } from './components/add-book/add-book.component';
 import { AboutComponent } from './components/pages/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BooksComponent,
-    BookItemComponent,
     HeaderComponent,
-    AddBookComponent,
-    AboutComponent
+    AboutComponent,
+    ReadComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    NgxsModule.forRoot([
+      BookState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
