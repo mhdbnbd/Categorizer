@@ -5,24 +5,23 @@ import { AppComponent } from './app.component';
 import { ReadComponent } from './read/read.component';
 import { CreateComponent } from './create/create.component';
 import { BookState } from './state/book.state';
+import { GenreState } from './state/genre.state';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-
-import { HeaderComponent } from './components/layout/header/header.component';
-import { AboutComponent } from './components/pages/about/about.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AboutComponent,
     ReadComponent,
     CreateComponent
   ],
   imports: [
     BrowserModule,
     NgxsModule.forRoot([
-      BookState
+      BookState,
+      GenreState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),

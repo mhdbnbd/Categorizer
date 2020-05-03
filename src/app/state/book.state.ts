@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Book } from './../models/Book';
-import { AddBook, RemoveBook, UpdateBook } from './../actions/book.actions';
+import { AddBook, RemoveBook } from './../actions/book.actions';
 
 // stateModel
 
@@ -20,7 +20,6 @@ export class BookStateModel {
 export class BookState {
 
     // return books
-
     @Selector()
     static getBooks(state: BookStateModel) {
         return state.books
@@ -41,6 +40,7 @@ export class BookState {
         })
     }
 
+    /*
     @Action(UpdateBook)
     update({getState, patchState}: StateContext<BookStateModel>, {payload, title}: UpdateBook) {
         const state = getState();
@@ -53,6 +53,7 @@ export class BookState {
             });
         
     }
+    */
 
 
 }
