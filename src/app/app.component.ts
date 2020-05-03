@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'book-categorize';
-  name = 'Mehdi Benabed'
+  name = 'mhdbnbd'
 }

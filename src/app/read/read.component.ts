@@ -4,6 +4,8 @@ import { Book } from '../models/Book'
 import { BookState } from '../state/book.state'
 import { Observable } from 'rxjs'
 import { RemoveBook } from '../actions/book.actions'
+import { UpdateBook } from '../actions/book.actions'
+
 
 @Component({
   selector: 'app-read',
@@ -24,6 +26,10 @@ export class ReadComponent implements OnInit {
 
   delBook(title){
     this.store.dispatch(new RemoveBook(title))
+  }
+
+  updateBook(payload: Book, title){
+    this.store.dispatch(new UpdateBook(payload, title))
   }
   
   ngOnInit(): void {}

@@ -1,8 +1,8 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Book } from './../models/Book';
-import { AddBook, RemoveBook } from './../actions/book.actions';
+import { AddBook, RemoveBook, UpdateBook } from './../actions/book.actions';
 
-// state model
+// stateModel
 
 export class BookStateModel {
     books: Book[]
@@ -39,6 +39,19 @@ export class BookState {
         patchState({
             books: getState().books.filter(a => a.title != payload)
         })
+    }
+
+    @Action(UpdateBook)
+    update({getState, patchState}: StateContext<BookStateModel>, {payload, title}: UpdateBook) {
+        const state = getState();
+        const bookList = [...state.books];
+        const bookIndex = bookList.findIndex(a => a.title == title);
+        bookList[bookIndex] = payload;
+            patchState({
+                ...state,
+                books: bookList,
+            });
+        
     }
 
 

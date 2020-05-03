@@ -11,3 +11,9 @@ export class RemoveBook {
 
     constructor(public payload: string) {}
 }
+
+export class UpdateBook {
+    static readonly type = '[BOOK] Update'
+
+    constructor(public payload: Book, public title: string) {}
+}

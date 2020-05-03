@@ -1,8 +1,30 @@
 <div class="right" *ngIf="books$">
-    <h3>Books</h3>
-    <ul>
-      <li (click)="delBook(book.title)" *ngFor="let book of books$ | async">
-        <a target="_blank">{{ book.title }} | {{ book.genre }}</a>
-      </li>
-    </ul>  
-  </div>
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Update</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books$ | async">
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" (click)="delBook(book.title)">x</button>
+        </td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.genre }}</td>
+        <td>
+          <div class="input-group input-group-sm">            
+            <input type="text" placeholder="Title" class="form-control">
+            <button type="button" class="btn btn-warning btn-sm" (click)="updateBook(book, book.title)">Update</button>
+          </div>        
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  
