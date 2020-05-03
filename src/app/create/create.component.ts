@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store'
-import { AddBook } from './../actions/book.actions'
-import { AddGenre } from './../actions/genre.actions'
+import { Store, Select } from '@ngxs/store';
+import { AddBook } from './../actions/book.actions';
+import { AddGenre } from './../actions/genre.actions';
+import { Observable } from 'rxjs';
+import { Genre } from '../models/Genre';
+import { GenreState } from '../state/genre.state';
+import { RemoveGenre } from '../actions/genre.actions';
 
 @Component({
   selector: 'app-create',
@@ -9,6 +13,9 @@ import { AddGenre } from './../actions/genre.actions'
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+
+    // Bind genres to observable
+    @Select(GenreState.getGenres) genres$: Observable<Genre[]>
 
   constructor(private store: Store) { }
 
@@ -20,6 +27,11 @@ export class CreateComponent implements OnInit {
 
   addGenre(name) {
     this.store.dispatch(new AddGenre({name: name}))
+  }
+
+  // Method to dispatch RemoveGenre action 
+  delGenre(name){
+    this.store.dispatch(new RemoveGenre(name))
   }
 
   ngOnInit(): void {
