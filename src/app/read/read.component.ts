@@ -4,6 +4,8 @@ import { Book } from '../models/Book';
 import { BookState } from '../state/book.state';
 import { Observable } from 'rxjs';
 import { RemoveBook } from '../actions/book.actions';
+import { Genre } from '../models/Genre';
+import { GenreState } from '../state/genre.state';
 
 @Component({
   selector: 'app-read',
@@ -16,6 +18,9 @@ export class ReadComponent implements OnInit {
   // Bind books to observable
   @Select(BookState.getBooks) books$: Observable<Book[]>
 
+  // Bind genres to observable
+  @Select(GenreState.getGenres) genres$: Observable<Genre[]>
+
   // Select book from the state  
   constructor(private store: Store) {}
 
@@ -23,7 +28,6 @@ export class ReadComponent implements OnInit {
   delBook(title){
     this.store.dispatch(new RemoveBook(title))
   }
-  
-  ngOnInit(): void {}
 
+  ngOnInit(): void {}
 }

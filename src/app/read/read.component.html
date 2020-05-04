@@ -1,4 +1,8 @@
 <div class="right" *ngIf="books$">
+  <select class="custom-select custom-select-sm" #genre>            
+    <option [value]="undefined">Select genre</option>
+    <option *ngFor="let genre of genres$ | async" [value]="genre.name">{{ genre.name }}</option>                        
+  </select>  
   <table class="table table-hover table-dark">
     <thead>
       <tr>

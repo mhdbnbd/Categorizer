@@ -14,8 +14,8 @@ import { RemoveGenre } from '../actions/genre.actions';
 })
 export class CreateComponent implements OnInit {
 
-    // Bind genres to observable
-    @Select(GenreState.getGenres) genres$: Observable<Genre[]>
+  // Bind genres to observable
+  @Select(GenreState.getGenres) genres$: Observable<Genre[]>
 
   constructor(private store: Store) { }
 

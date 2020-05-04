@@ -9,16 +9,20 @@ import { GenreState } from './state/genre.state';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { HeaderComponent } from './header/header.component';
+import { FilterBookPipe } from './filter-book.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ReadComponent,
-    CreateComponent
+    CreateComponent,
+    FilterBookPipe
   ],
   imports: [
     BrowserModule,
+    FormsModule,    
     NgxsModule.forRoot([
       BookState,
       GenreState

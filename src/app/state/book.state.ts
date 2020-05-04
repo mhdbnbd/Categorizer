@@ -42,17 +42,6 @@ export class BookState {
 
     /*
     @Action(UpdateBook)
-    update({getState, patchState}: StateContext<BookStateModel>, {payload, title}: UpdateBook) {
-        const state = getState();
-        const bookList = [...state.books];
-        const bookIndex = bookList.findIndex(a => a.title == title);
-        bookList[bookIndex] = payload;
-            patchState({
-                ...state,
-                books: bookList,
-            });
-        
-    }
     */
 
 
